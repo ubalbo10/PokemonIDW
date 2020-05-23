@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_app"
+    tools:ignore="UnusedNavigation"
+    app:startDestination="@id/listarPokemonFragment">
+
+    <fragment
+        android:id="@+id/listarPokemonFragment"
+        android:name="com.example.pokemonidw.ListarPokemonFragment"
+        android:label="fragment_listar_pokemon"
+        tools:layout="@layout/fragment_listar_pokemon" >
+        <action
+            android:id="@+id/action_listarPokemonFragment_to_detallePokemonFragment"
+            app:destination="@id/detallePokemonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detallePokemonFragment"
+        android:name="com.example.pokemonidw.DetallePokemonFragment"
+        android:label="fragment_detalle_pokemon"
+        tools:layout="@layout/fragment_detalle_pokemon" >
+        <argument
+            android:name="urlDetalle"
+            app:argType="string" />
+    </fragment>
+</navigation>
