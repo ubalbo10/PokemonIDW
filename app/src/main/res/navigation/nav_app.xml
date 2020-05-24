@@ -23,5 +23,20 @@
         <argument
             android:name="urlDetalle"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detallePokemonFragment_to_favoritosFragment"
+            app:destination="@id/favoritosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritosFragment"
+        android:name="com.example.pokemonidw.FavoritosFragment"
+        android:label="fragment_favoritos"
+        tools:layout="@layout/fragment_favoritos" >
+        <action
+            android:id="@+id/action_favoritosFragment_to_detallePokemonFragment"
+            app:destination="@id/detallePokemonFragment" />
+        <action
+            android:id="@+id/action_favoritosFragment_to_listarPokemonFragment"
+            app:destination="@id/listarPokemonFragment" />
     </fragment>
 </navigation>

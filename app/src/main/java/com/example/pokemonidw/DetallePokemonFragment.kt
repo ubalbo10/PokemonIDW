@@ -1,14 +1,17 @@
 package com.example.pokemonidw
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.view.isVisible
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -19,14 +22,13 @@ import com.example.pokemonidw.clases.DetallePokemon
 import com.example.pokemonidw.clases.Favoritos
 import com.example.pokemonidw.clases.PokemonEspecie
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
+
 
 /**
  * A simple [Fragment] subclass.
@@ -36,13 +38,15 @@ class DetallePokemonFragment : Fragment() {
     var url: String? = null
     var urlFoto:String?=null
     lateinit var retrofit:Retrofit
+    lateinit var irafav:Button
+    var mensaje=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          url=arguments?.getString("urlDetalle")
          urlFoto=arguments?.getString("urlfoto")
           db = Room.databaseBuilder(
-            activity!!.applicationContext,
+            requireActivity().applicationContext,
             AppDatabase::class.java, "databaseLocal"
         ).build()
 
@@ -78,6 +82,10 @@ class DetallePokemonFragment : Fragment() {
         var recyclerhabilidades=view.findViewById<RecyclerView>(R.id.recyclerview_habilidades)
         var favorito=view.findViewById<RadioButton>(R.id.radioButton_favorito)
         var aceptar=view.findViewById<Button>(R.id.button_favorito)
+        irafav=view.findViewById(R.id.button_irfavoritos)
+        irafav.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_detallePokemonFragment_to_favoritosFragment)
+        }
         aceptar.setOnClickListener {
             if(favorito.isChecked){
                 var numero=url!!.toInt()
@@ -85,21 +93,40 @@ class DetallePokemonFragment : Fragment() {
                 var add=Favoritos(numero,favorito)
                 //insertar y update isfavorito de favoritos
                 GlobalScope.launch {
-                    try{
+
+                    var respuesta=db.favDao().updateFav(add)
+                    Log.i("bd2",respuesta.toString())
+                    if(respuesta==0){
                         var respuesta=db.favDao().insertAll(add)
-                        Log.i("bd",respuesta.toString())
 
-                    }catch (e: NumberFormatException) {
-                        Toast.makeText(activity,"agregado anteriormente",Toast.LENGTH_LONG).show()
                     }
-
-                    var respuesta2=db.favDao().updateFav(add)
-                    Log.i("bd2",respuesta2.toString())
                     var tamano=db.favDao().loadAllByIds(true)
                     Log.i("bd3","${tamano.size.toString()}")
+                    mensaje="Este pokemon podra verlo en la lista de favoritos"
+
                 }
 
+            }else{
+                //update a no favorito
+                var numero=url!!.toInt()
+                var favorito:Boolean=false
+                var add=Favoritos(numero,favorito)
+                GlobalScope.launch {
+
+                    var respuesta=db.favDao().updateFav(add)
+                    Log.i("bd2",respuesta.toString())
+                    if(respuesta==0){
+                        var respuesta=db.favDao().insertAll(add)
+                    }
+                    mensaje="Este pokemon no aparecera en favoritos"
+
+
+                }
             }
+            var handler=Handler()
+            handler.postDelayed(
+                {mostrarDialogo()} ,1000
+            )
         }
 
         Glide.with(view).load(urlFoto).into(foto);
@@ -171,6 +198,21 @@ class DetallePokemonFragment : Fragment() {
 
 
         return view
+    }
+
+    fun createSimpleDialog(): android.app.AlertDialog? {
+        val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(activity)
+        builder.setTitle("Pokemon Favoritos")
+            .setMessage(mensaje)
+            .setPositiveButton("OK",
+                DialogInterface.OnClickListener { dialog, which ->
+
+                })
+
+        return builder.create()
+    }
+    fun mostrarDialogo(){
+        createSimpleDialog()!!.show()
     }
 
 }
