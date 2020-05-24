@@ -64,7 +64,7 @@ class AdapterListaPokemon(items:List<Pokemon>): RecyclerView.Adapter<AdapterList
 
         fun asignarDatos(datos: Pokemon) {
             //asignar datos
-            nombre.text="Nombre:${datos.name}"
+            nombre.text="${datos.name}"
             //ListarPokemonFragment.URLPOKEMONDETALLE=datos.url
 
 

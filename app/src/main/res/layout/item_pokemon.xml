@@ -3,19 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="190dp"
+    android:padding="10dp"
+    android:background="@color/cardview_shadow_end_color"
+
     android:layout_height="240dp">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
+        app:cardElevation="20dp"
+
         app:cardCornerRadius="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
-
+            android:padding="5dp"
+            android:background="@drawable/borders"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

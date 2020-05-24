@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,10 +45,11 @@
 
         <ImageView
             android:id="@+id/imageView_fotodetalle"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:elevation="20dp"
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintBottom_toTopOf="@+id/button_generacion"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,10 +59,15 @@
         <Button
             android:id="@+id/button_generacion"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="64dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/botones"
+            android:backgroundTint="#CF2519"
+            android:padding="15dp"
             android:text="generacion"
+            android:textColor="#F3ECE8E8"
             app:layout_constraintBottom_toTopOf="@+id/textView_detalle_numero"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_fotodetalle" />
@@ -69,11 +75,12 @@
         <TextView
             android:id="@+id/textView_detalle_numero"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="TextView"
+            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/textView_detalle_nombre"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_generacion" />
@@ -81,11 +88,13 @@
         <TextView
             android:id="@+id/textView_detalle_nombre"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:text="TextView"
+            android:textSize="14sp"
+
             app:layout_constraintBottom_toTopOf="@+id/textView_titulo_especie"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_detalle_numero" />
@@ -93,11 +102,12 @@
         <TextView
             android:id="@+id/textView_titulo_especie"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:text="TextView"
+            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/textView_detalle_especie1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_detalle_nombre" />
@@ -105,11 +115,12 @@
         <TextView
             android:id="@+id/textView_detalle_especie2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:text="TextView"
+            android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/button_detalle_weight"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_detalle_especie1" />
@@ -117,11 +128,12 @@
         <TextView
             android:id="@+id/textView_detalle_especie1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="TextView"
+            android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/textView_detalle_especie2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_titulo_especie" />
@@ -129,11 +141,15 @@
         <Button
             android:id="@+id/button_detalle_weight"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/botones"
+            android:backgroundTint="#33691E"
+            android:padding="15dp"
             android:text="Button"
+            android:textColor="#F3ECE8E8"
             app:layout_constraintBottom_toTopOf="@+id/textView_titulo_habilidades"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_detalle_especie2" />
@@ -141,25 +157,27 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
-            android:layout_height="183dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="40dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/cardview_light_background"
             app:layout_constraintTop_toBottomOf="@+id/textView_titulo_habilidades">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_habilidades"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView_titulo_habilidades"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="19dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="7dp"
@@ -168,5 +186,53 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_detalle_weight"
             app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button_irfavoritos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="25dp"
+            android:text="verFavoritos"
+            app:layout_constraintBottom_toTopOf="@+id/button_compartir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_favorito" />
+
+        <Button
+            android:id="@+id/button_compartir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="Compartir"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <RadioButton
+            android:id="@+id/radioButton_favorito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="8dp"
+            android:text="Favorito"
+
+            app:layout_constraintBottom_toTopOf="@+id/button_favorito"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_generacion" />
+
+        <Button
+            android:id="@+id/button_favorito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            android:text="aceptar"
+            app:layout_constraintBottom_toTopOf="@+id/button_irfavoritos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton_favorito" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

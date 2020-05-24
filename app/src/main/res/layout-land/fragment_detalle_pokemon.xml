@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetallePokemonFragment">
+    <LinearLayout
+        android:id="@+id/cargando"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/cardview_dark_background"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="22892-pikachu.json"
+            app:lottie_imageAssetsFolder="assets"
+            app:lottie_loop="true" />
+    </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/pantallaprincipaldetalle"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/imageView_fotodetalle"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:elevation="20dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_generacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botones"
+            android:backgroundTint="#CF2519"
+            android:padding="15dp"
+            android:text="generacion"
+            android:textColor="#F3ECE8E8"
+            app:layout_constraintBottom_toTopOf="@+id/guideline7"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+        <TextView
+            android:id="@+id/textView_titulo_especie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView_detalle_especie1"
+            app:layout_constraintStart_toEndOf="@+id/imageView_fotodetalle"
+            app:layout_constraintTop_toTopOf="@+id/imageView_fotodetalle" />
+
+        <TextView
+            android:id="@+id/textView_detalle_especie2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView_titulo_especie"
+            app:layout_constraintTop_toBottomOf="@+id/textView_detalle_especie1" />
+
+        <Button
+            android:id="@+id/button_detalle_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botones"
+            android:backgroundTint="#33691E"
+            android:padding="15dp"
+            android:text="Button"
+            android:textColor="#F3ECE8E8"
+            app:layout_constraintBottom_toTopOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+        <TextView
+            android:id="@+id/textView_detalle_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="20dp"
+            android:text="TextView"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_fotodetalle"
+            app:layout_constraintTop_toBottomOf="@+id/textView_detalle_numero" />
+
+        <TextView
+            android:id="@+id/textView_detalle_especie1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="TextView"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView_detalle_especie2"
+            app:layout_constraintStart_toStartOf="@+id/textView_titulo_especie"
+            app:layout_constraintTop_toBottomOf="@+id/textView_titulo_especie" />
+
+        <TextView
+            android:id="@+id/textView_detalle_numero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView_detalle_nombre"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_fotodetalle"
+            app:layout_constraintTop_toTopOf="@+id/imageView_fotodetalle" />
+
+        <TextView
+            android:id="@+id/textView_titulo_habilidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Habilidades"
+            app:layout_constraintBottom_toTopOf="@+id/guideline7"
+            app:layout_constraintEnd_toStartOf="@+id/button_detalle_weight"
+            app:layout_constraintStart_toEndOf="@+id/button_generacion"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="261dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="471dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="304dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="224dp" />
+
+        <LinearLayout
+            android:layout_width="729dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline7">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_habilidades"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

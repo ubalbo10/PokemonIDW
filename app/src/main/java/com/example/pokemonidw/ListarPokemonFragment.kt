@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemonidw.Interfaces.ApiService
@@ -22,6 +23,15 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class ListarPokemonFragment : Fragment() {
     lateinit var listadoPokemones:List<Pokemon>
+    lateinit var retrofit:Retrofit
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retrofit = Retrofit.Builder()
+            .baseUrl(ApiService.URL_BASE)
+            //.addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,12 +40,10 @@ class ListarPokemonFragment : Fragment() {
 
         var vista:View=inflater.inflate(R.layout.fragment_listar_pokemon, container, false)
         var recyler=vista.findViewById<RecyclerView>(R.id.recycler_pokemon)
+        var loading=vista.findViewById<LinearLayout>(R.id.pantallaloading)
+        loading.visibility=View.VISIBLE
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(ApiService.URL_BASE)
-            //.addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+
         val services = retrofit.create(ApiService::class.java)
         services.ObtenerListadoDePokemones()?.enqueue(object : Callback<ListaPokemon?>{
             override fun onResponse(
@@ -44,11 +52,13 @@ class ListarPokemonFragment : Fragment() {
             ) {
                 if(response.isSuccessful){
                     var respuesta=response.body()
+                    loading.visibility=View.GONE
                     //obtengo la lista de los nombres de los 20 primeros pokemones pero sin la foto
                     listadoPokemones=respuesta!!.results
 
                     recyler.adapter = AdapterListaPokemon(listadoPokemones)
                     recyler!!.layoutManager =GridLayoutManager(activity,2)
+                    recyler!!.setHasFixedSize(true)
                     Log.i("msj","estoy aqui")
 
                 }
@@ -56,6 +66,7 @@ class ListarPokemonFragment : Fragment() {
 
             override fun onFailure(call: Call<ListaPokemon?>, t: Throwable) {
                 Log.i("msj","estoy fallando")
+                //poner un dialogo
             }
 
         })
