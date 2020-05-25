@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/favoritosFragment"
+
+        android:checkable="false"
+        app:showAsAction="withText"
+        android:icon="@drawable/ic_favoritos"
+
+        android:title="favoritos" />
+    <item
+        android:id="@+id/listarPokemonFragment"
+        android:enabled="true"
+        app:showAsAction="withText"
+        android:icon="@drawable/ic_home"
+
+
+        android:title="HomePokemones" />
+</menu>
