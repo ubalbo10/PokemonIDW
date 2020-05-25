@@ -2,6 +2,7 @@ package com.example.pokemonidw
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -82,6 +83,19 @@ class DetallePokemonFragment : Fragment() {
         var recyclerhabilidades=view.findViewById<RecyclerView>(R.id.recyclerview_habilidades)
         var favorito=view.findViewById<RadioButton>(R.id.radioButton_favorito)
         var aceptar=view.findViewById<Button>(R.id.button_favorito)
+        var compartir=view.findViewById<Button>(R.id.button_compartir)
+        compartir.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                var texto="Bueno soy el pokemon numero:${numero.text} y me llamo ${nombre.text} puedes ver mi foto en ${urlFoto} " +
+                        "es un gran pokemon me gusta mucho por eso lo comparto contigo echale una mirada, hasta luego"
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, texto)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
         irafav=view.findViewById(R.id.button_irfavoritos)
         irafav.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_detallePokemonFragment_to_favoritosFragment)
@@ -130,6 +144,7 @@ class DetallePokemonFragment : Fragment() {
         }
 
         Glide.with(view).load(urlFoto).into(foto);
+
         especietitulo.text="Especie"
         generacion.text="Generacion"
 
@@ -143,7 +158,8 @@ class DetallePokemonFragment : Fragment() {
                 call: Call<DetallePokemon?>,
                 response: Response<DetallePokemon?>
             ) {
-               if(response.isSuccessful){
+
+                if(response.isSuccessful){
                    var respuesta=response.body()
                    Log.i("respuesta",respuesta.toString())
                    nombre.text=respuesta!!.name

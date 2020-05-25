@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetallePokemonFragment">
+
     <LinearLayout
         android:id="@+id/cargando"
         android:layout_width="match_parent"
@@ -27,12 +28,17 @@
             app:lottie_loop="true" />
 
     </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/pantallaprincipaldetalle"
         android:layout_width="match_parent"
 
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <ImageView
@@ -42,10 +48,11 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginStart="150dp"
             android:layout_marginTop="10dp"
             android:elevation="20dp"
             android:src="@drawable/ic_launcher_background"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,17 +66,19 @@
             android:text="generacion"
             android:textColor="#F3ECE8E8"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintEnd_toStartOf="@+id/button_detalle_weight"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout3"
             app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
         <RadioButton
             android:id="@+id/radioButton_favorito"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="36dp"
 
             android:text="Favorito"
+            app:layout_constraintBottom_toTopOf="@+id/button_favorito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,8 +87,8 @@
             android:id="@+id/textView_titulo_especie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="10dp"
             android:text="TextView"
             android:textSize="12sp"
@@ -92,8 +101,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:text="TextView"
             android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/textView_titulo_especie"
             app:layout_constraintTop_toBottomOf="@+id/textView_detalle_especie1" />
 
@@ -101,12 +112,14 @@
             android:id="@+id/button_detalle_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/botones"
             android:backgroundTint="#33691E"
             android:padding="15dp"
             android:text="Button"
             android:textColor="#F3ECE8E8"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
+            app:layout_constraintEnd_toStartOf="@+id/button_compartir"
             app:layout_constraintStart_toStartOf="@+id/guideline6"
             app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
@@ -152,8 +165,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Habilidades"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
-            app:layout_constraintEnd_toStartOf="@+id/button_detalle_weight"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintStart_toEndOf="@+id/button_generacion"
             app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
@@ -162,43 +176,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="261dp" />
+            app:layout_constraintGuide_begin="203dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="471dp" />
+            app:layout_constraintGuide_begin="194dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="304dp" />
+            app:layout_constraintGuide_percent="0.82" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="224dp" />
+            app:layout_constraintGuide_percent="0.5" />
 
         <LinearLayout
-            android:layout_width="729dp"
-            android:layout_height="86dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:orientation="horizontal"
+            android:id="@+id/linearLayout3"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline7">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_habilidades"
                 android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
                 android:layout_height="match_parent" />
         </LinearLayout>
 
@@ -206,9 +222,11 @@
             android:id="@+id/button_favorito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="28dp"
+            android:layout_marginBottom="15dp"
             android:text="Aceptar"
+            app:layout_constraintBottom_toTopOf="@+id/button_irfavoritos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioButton_favorito" />
 
@@ -216,22 +234,23 @@
             android:id="@+id/button_irfavoritos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="28dp"
+            android:layout_marginBottom="20dp"
             android:text="IrFavoritos"
+            app:layout_constraintBottom_toTopOf="@+id/button_compartir"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_favorito" />
 
         <Button
             android:id="@+id/button_compartir"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="28dp"
+            android:layout_marginBottom="40dp"
             android:text="compartir"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_detalle_weight"
             app:layout_constraintTop_toBottomOf="@+id/button_irfavoritos" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
