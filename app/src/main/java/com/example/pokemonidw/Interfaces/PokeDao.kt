@@ -10,6 +10,10 @@ interface PokeDao {
     @Query("SELECT * FROM PokemonRoom")
     fun getAll(): List<PokemonRoom>
 
+
+    @Query("SELECT * FROM PokemonRoom WHERE numero = (:id)")
+    fun loadAllByIds(id: Int): PokemonRoom
+
     @Insert
     fun insertAll(vararg pokemon: PokemonRoom)
 

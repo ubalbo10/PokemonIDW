@@ -89,13 +89,17 @@ class ListarPokemonFragment : Fragment() {
                             1,habilidad1,habilidad2)
 
                             GlobalScope.launch {
+                                var tamanobd=db.PokeDao().getAll().size
+                                if(tamanobd<=19){
+                                    var respuesta=db.PokeDao().updatePok(pokemonRoom)
+                                    Log.i("bd2",respuesta.toString())
+                                    if(respuesta==0){
+                                        var respuesta=db.PokeDao().insertAll(pokemonRoom)
 
-                                var respuesta=db.PokeDao().updatePok(pokemonRoom)
-                                Log.i("bd2",respuesta.toString())
-                                if(respuesta==0){
-                                    var respuesta=db.PokeDao().insertAll(pokemonRoom)
-
+                                    }
                                 }
+
+
 
                             }
                         }
@@ -128,7 +132,7 @@ class ListarPokemonFragment : Fragment() {
                 var respuesta=db.PokeDao().getAll()
                 var listadopokemonesarray=ArrayList<Pokemon>()//porque el adaptador del recycle pide list luego lo casteare
                 for(pokemon in respuesta){
-                    contador=0+1
+                    contador=contador+1
                     var nombre=pokemon.nombre
                     var url="https://pokeapi.co/api/v2/pokemon/$contador/"
                     var pokemonadd=Pokemon(nombre!!,url)
